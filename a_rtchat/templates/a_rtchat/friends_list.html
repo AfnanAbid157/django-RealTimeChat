@@ -1,0 +1,48 @@
+{% extends 'layouts/blank.html' %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto py-10">
+    <h1 class="text-2xl font-bold mb-6 text-center text-white">Chats</h1>
+
+    <!-- 🌍 Group Chat Section -->
+    <div class="mb-8">
+        <h2 class="text-xl font-semibold text-white mb-3">Group Chat</h2>
+        <a href="{% url 'chatroom' group_chat.group_name %}"
+           class="flex items-center justify-between bg-emerald-600 p-4 rounded-xl hover:bg-emerald-700">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🌍</span>
+                <span class="text-white font-bold">Public Group Chat</span>
+            </div>
+            <span class="text-sm text-gray-200">Everyone can chat here</span>
+        </a>
+    </div>
+
+    <!-- 👥 Private Chats Section -->
+    <div>
+        <h2 class="text-xl font-semibold text-white mb-3">Private Chats</h2>
+        <ul class="space-y-4">
+            {% for friend in friends %}
+            <li>
+                <a href="{% url 'start-chat' friend.username %}"
+                   class="flex items-center justify-between bg-gray-800 p-4 rounded-xl hover:bg-gray-700">
+                    <div class="flex items-center gap-3">
+                        <img class="w-10 h-10 rounded-full object-cover" 
+                             src="{{ friend.profile.avatar }}" 
+                             alt="{{ friend.username }}">
+                        <div>
+                            <p class="text-white font-semibold">{{ friend.profile.name }}</p>
+                            <p class="text-gray-400 text-sm">@{{ friend.username }}</p>
+                        </div>
+                    </div>
+                    <span class="bg-emerald-500 text-white px-3 py-1 rounded-lg text-sm">
+                        Chat →
+                    </span>
+                </a>
+            </li>
+            {% empty %}
+            <li class="text-center text-gray-400">No friends yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}
