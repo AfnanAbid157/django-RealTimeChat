@@ -11,7 +11,8 @@ class ChatroomConsumer(WebsocketConsumer):
     def connect(self):
         self.user = self.scope['user']
         self.chatroom_name = self.scope['url_route']['kwargs']['chatroom_name']
-        self.chatroom = get_object_or_404(ChatGroup, group_name=self.chatroom_name)
+        self.chatroom = get_object_or_404(
+            ChatGroup, group_name=self.chatroom_name)
 
         # Add user to channel group
         async_to_sync(self.channel_layer.group_add)(
@@ -73,7 +74,7 @@ class ChatroomConsumer(WebsocketConsumer):
         self.send(text_data=html)
 
     def update_online_count(self):
-        online_count = self.chatroom.user_online.count()-1 
+        online_count = self.chatroom.user_online.count()-1
 
         event = {
             'type': 'online_count_handler',

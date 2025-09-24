@@ -45,7 +45,7 @@ def chat_view(request, chatroom_name='public-chat'):
     return render(request, 'a_rtchat/chat.html', context)
 
 
-#@login_required
+# @login_required
 
 def get_or_create_chatroom(request, username):   # 👈 must be top-level
     if request.user.username == username:
@@ -76,7 +76,7 @@ def friends_list(request):
     # Ensure a public group chatroom exists
     from .models import ChatGroup
     group_chat, created = ChatGroup.objects.get_or_create(
-        group_name="public-chat", 
+        group_name="public-chat",
         is_private=False
     )
 

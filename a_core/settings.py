@@ -28,7 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
-CSRF_TRUSTED_ORIGINS = [ 'https://*' ]
+CSRF_TRUSTED_ORIGINS = ['https://*']
 
 
 # Application definition
@@ -51,12 +51,12 @@ INSTALLED_APPS = [
     # My apps
     'a_home',
     'a_users',
-    
+
     'a_rtchat',
-    
+
     # Third party
     'django_browser_reload',
-    
+
 ]
 
 SITE_ID = 1
@@ -86,7 +86,7 @@ ROOT_URLCONF = 'a_core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates' ],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -100,7 +100,7 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'a_core.wsgi.application'
+# WSGI_APPLICATION = 'a_core.wsgi.application'
 ASGI_APPLICATION = "a_core.asgi.application"
 
 
@@ -109,7 +109,6 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     },
 }
-
 
 
 # Database
@@ -158,10 +157,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [ BASE_DIR / 'static' ]
+STATICFILES_DIRS = [BASE_DIR / 'static']
 
 MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media' 
+MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
